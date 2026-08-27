@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DirectorGuard.AI — Autonomous SRE & Media Streaming Incident Remediation Swarm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Command Bar -->
+    <header class="command-header">
+        <div class="brand-cluster">
+            <div class="live-beacon"></div>
+            <div class="brand-text">
+                <span class="brand-title">DirectorGuard<span class="highlight">.AI</span></span>
+                <span class="brand-sub">Google Cloud + Grafana Cloud MCP Autonomous SRE Swarm</span>
+            </div>
+            <span class="badge-track">Agentic Cinema: Grafana Track</span>
+        </div>
+
+        <div class="sli-gauges-cluster">
+            <div class="sli-pill">
+                <span class="sli-label">P99 Latency</span>
+                <span class="sli-value" id="sliP99">48.2 ms</span>
+            </div>
+            <div class="sli-pill">
+                <span class="sli-label">5xx Error Rate</span>
+                <span class="sli-value" id="sliErr">0.02%</span>
+            </div>
+            <div class="sli-pill">
+                <span class="sli-label">Live Viewers</span>
+                <span class="sli-value" id="sliStreams">126,450</span>
+            </div>
+            <div class="sli-pill">
+                <span class="sli-label">Throughput</span>
+                <span class="sli-value" id="sliThru">52.4 Gbps</span>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button id="toggleAutonomousBtn" class="btn btn-autonomous active">
+                <span class="dot"></span>
+                <span id="autonomousText">Auto-Remediation: ON</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Incident Mission Control Layout -->
+    <main class="mission-layout">
+        <!-- Left Panel: Pipeline Topology & Incident State -->
+        <section class="panel left-panel">
+            <!-- Active Incident Banner -->
+            <div class="card incident-card" id="incidentCard">
+                <div class="incident-status-row">
+                    <span class="status-badge healthy" id="incidentBadge">🟢 SYSTEM OPERATIONAL (100% SLI)</span>
+                    <span class="incident-id" id="incidentId">NO ACTIVE INCIDENT</span>
+                </div>
+                <h3 class="incident-title" id="incidentTitle">All Media & Transcoding Ingestion Services Operating Within Baseline</h3>
+                <p class="incident-desc" id="incidentDesc">Prometheus metrics and Loki log streams indicate zero active production anomalies across US-East, EU-Central, and AP-South CDN PoPs.</p>
+
+                <div class="remediation-box" id="remediationBox" style="display: none;">
+                    <div class="rem-header">⚡ Autonomous Gemini SRE Action Queued:</div>
+                    <div class="rem-title" id="remTitle">PURGE_CDN_CACHE_AND_REROUTE</div>
+                    <button class="btn btn-primary btn-sm" id="manualExecuteBtn">Execute Runbook Now</button>
+                </div>
+            </div>
+
+            <!-- Chaos Injection Studio -->
+            <div class="card mt-16">
+                <div class="card-header">
+                    <span class="card-title">🎬 Chaos Injection Studio (Simulate Outages)</span>
+                    <span class="card-hint">Test Autonomous Self-Healing</span>
+                </div>
+                <div class="chaos-grid">
+                    <button class="chaos-btn" data-disaster="CDN_CACHE_POISONING">
+                        <strong>🌪️ Edge CDN Cache Poisoning</strong>
+                        <small>502 Gateway spike & client video buffer stall</small>
+                    </button>
+                    <button class="chaos-btn" data-disaster="TRANSCODER_OOM_STALL">
+                        <strong>💥 4K Transcoder OOM Stall</strong>
+                        <small>HEVC worker memory leak & queue backlog</small>
+                    </button>
+                    <button class="chaos-btn" data-disaster="AUTH_RATE_LIMIT_DEADLOCK">
+                        <strong>🔒 DRM Auth Gateway Deadlock</strong>
+                        <small>Redis socket exhaustion & playback stalls</small>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pipeline Service Health Topology -->
+            <div class="card mt-16">
+                <span class="card-title">📡 Studio Streaming Infrastructure Topology</span>
+                <div class="topology-grid">
+                    <div class="service-node active" id="node-video-ingest">
+                        <span class="node-name">video-ingest</span>
+                        <span class="node-status">HEALTHY</span>
+                    </div>
+                    <div class="service-node active" id="node-transcoder-4k">
+                        <span class="node-name">transcoder-4k</span>
+                        <span class="node-status">HEALTHY</span>
+                    </div>
+                    <div class="service-node active" id="node-segmenter-hls">
+                        <span class="node-name">segmenter-hls</span>
+                        <span class="node-status">HEALTHY</span>
+                    </div>
+                    <div class="service-node active" id="node-edge-cdn-gateway">
+                        <span class="node-name">edge-cdn-gateway</span>
+                        <span class="node-status">HEALTHY</span>
+                    </div>
+                    <div class="service-node active" id="node-auth-token-service">
+                        <span class="node-name">auth-token-service</span>
+                        <span class="node-status">HEALTHY</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Live Grafana MCP Telemetry & Gemini Reasoning -->
+        <section class="panel right-panel">
+            <!-- Telemetry Graph Canvas -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📊 Prometheus P99 Latency & Error Rate (Grafana Cloud MCP)</span>
+                    <span class="live-pill">LIVE PROMQL STREAM</span>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="telemetryCanvas" width="700" height="200"></canvas>
+                </div>
+            </div>
+
+            <!-- Gemini 2.0 Reasoning & MCP Diagnostics Stream -->
+            <div class="card mt-16">
+                <div class="card-header">
+                    <span class="card-title">🤖 Gemini 2.0 SRE Reasoning & MCP Tool Execution</span>
+                    <span class="agent-pill">AUTONOMOUS AGENT ACTIVE</span>
+                </div>
+                <div class="reasoning-feed" id="reasoningFeed">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Loki Log Stream Terminal -->
+            <div class="card mt-16">
+                <div class="card-header">
+                    <span class="card-title">📜 Loki Structured Log Stream (LogQL)</span>
+                    <span class="card-hint">Real-Time Ingestion</span>
+                </div>
+                <div class="terminal-box" id="lokiTerminal">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
